@@ -56,9 +56,10 @@ Number.isInteger = Number.isInteger || function (value) {
 var NODEJS = false;
 {
 	// NOTE: `NODEJS` determines which network library to use, so using fs-detection is apropos.
+	//nodejs 确定使用哪一种库，使用fs模块
 	if (typeof module !== 'undefined' && module.exports && typeof require === 'function') {
 		try {
-			require.resolve('fs');
+			require.resolve('fs');//查询fs模块文件的带有完整绝对路径的模块文件名
 			NODEJS = true;
 		}
 		catch (ex) {
@@ -68,10 +69,12 @@ var NODEJS = false;
 }
 
 // [Node.js] <script> includes
+//引入相关脚本
 if (NODEJS) {
 	var gObjPptxColors = require('../dist/pptxgen.colors.js');
 	var gObjPptxShapes = require('../dist/pptxgen.shapes.js');
 }
+//主函数
 var PptxGenJS = function () {
 	// APP
 	var APP_VER = "2.3.0-beta";
